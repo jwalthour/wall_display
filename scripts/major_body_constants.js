@@ -1,0 +1,1 @@
+var LUNA_SIDEREAL_PERIOD = 27.321582; // days
