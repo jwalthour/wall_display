@@ -10,13 +10,24 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2"
-   height="130.13127"
-   width="130"
+   height="82"
+   width="82"
    version="1.1"
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="earth.svg">
   <defs
-     id="defs110" />
+     id="defs110">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2997">
+      <path
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         d="m 164.74323,60.994633 c 57.38891,0 103.91495,46.526017 103.91495,103.914957 0,57.38894 -46.52604,103.91496 -103.91495,103.91496 -57.38891,0 -103.914962,-46.52602 -103.914962,-103.91496 0,-57.38894 46.526052,-103.914957 103.914962,-103.914957 z"
+         id="path2999"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="sssss" />
+    </clipPath>
+  </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -31,8 +42,8 @@
      id="namedview108"
      showgrid="false"
      inkscape:zoom="3.337544"
-     inkscape:cx="37.233662"
-     inkscape:cy="56.087055"
+     inkscape:cx="-22.571111"
+     inkscape:cy="32.021424"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -49,13 +60,14 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      id="g4069"
-     transform="matrix(-0.3945534,0,0,-0.3945534,130,130.13128)">
+     transform="matrix(-0.3945534,0,0,-0.3945534,106,106.06564)"
+     clip-path="url(#clipPath2997)">
     <path
        sodipodi:nodetypes="ccccccc"
        inkscape:connector-curvature="0"
@@ -71,14 +83,4 @@
          inkscape:connector-curvature="0" />
     </g>
   </g>
-  <path
-     sodipodi:type="arc"
-     style="fill:#ff0d00;fill-opacity:1"
-     id="path4074"
-     sodipodi:cx="-43.1455"
-     sodipodi:cy="71.705078"
-     sodipodi:rx="2.3969719"
-     sodipodi:ry="2.3969719"
-     d="m -40.748528,71.705078 a 2.3969719,2.3969719 0 1 1 -4.793944,0 2.3969719,2.3969719 0 1 1 4.793944,0 z"
-     transform="translate(108.1455,-6.6394424)" />
 </svg>
