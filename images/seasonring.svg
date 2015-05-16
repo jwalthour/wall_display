@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="318.54031"
+   height="318.54022"
+   id="svg3999"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="seasonring.svg"
+   inkscape:export-filename="C:\Users\Antonio\Documents\orrery project\testsun.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4001">
+    <linearGradient
+       id="linearGradient4369">
+      <stop
+         style="stop-color:#000000;stop-opacity:0.8018018;"
+         offset="0"
+         id="stop4371" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop4373" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4369"
+       id="linearGradient4375"
+       x1="49.630428"
+       y1="54.325397"
+       x2="49.630428"
+       y2="46.291229"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#3650d4"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.33333333"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="-164.17431"
+     inkscape:cy="303.35794"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="706"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata4004">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(109.27014,-843.09208)">
+    <path
+       inkscape:connector-curvature="0"
+       id="path3041"
+       d="m 49.999998,843.86787 c -87.555413,0 -158.494348,70.93895 -158.494348,158.49443 0,87.5552 70.938935,158.4942 158.494348,158.4942 87.555422,0 158.494362,-70.939 158.494362,-158.4942 0,-87.55548 -70.93894,-158.49443 -158.494362,-158.49443 z m 0,43.38317 c 63.555692,0 115.111202,51.55551 115.111202,115.11126 0,63.5556 -51.55551,115.111 -115.111202,115.111 -63.555688,0 -115.111198,-51.5554 -115.111198,-115.111 0,-63.55575 51.55551,-115.11126 115.111198,-115.11126 z"
+       style="fill:#989898;fill-opacity:1;stroke:#000000;stroke-width:1.55158913px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <g
+       transform="matrix(2.9165148,0,0,2.9165148,-498.9753,-2168.9457)"
+       id="g3043">
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:0.49012539px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 148.75988,135.00002 -14.87548,0"
+         id="path3045"
+         transform="translate(0,952.36218)" />
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:0.49012539px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 242.57541,135.00002 -14.87548,0"
+         id="path3047"
+         transform="translate(0,952.36218)" />
+      <path
+         id="path3065"
+         d="m 188.21428,1126.6703 0,15.0115"
+         style="fill:none;stroke:#000000;stroke-width:0.49012539px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path3067"
+         d="m 188.21427,1033.0425 0,15.0115"
+         style="fill:none;stroke:#000000;stroke-width:0.49012539px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:23.42828751px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="705.44501"
+       y="544.90991"
+       id="text3075"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"><tspan
+         sodipodi:role="line"
+         x="705.44501"
+         y="544.90991"
+         id="tspan3079">Spring</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:23.42828751px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="620.40894"
+       y="-870.14404"
+       id="text3075-1"
+       sodipodi:linespacing="125%"
+       transform="matrix(-0.70710678,0.70710678,-0.70710678,-0.70710678,0,0)"><tspan
+         sodipodi:role="line"
+         x="620.40894"
+         y="-870.14404"
+         id="tspan3079-7">Summer</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:23.42828751px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-791.92743"
+       y="-800.0329"
+       id="text3075-4"
+       sodipodi:linespacing="125%"
+       transform="matrix(-0.70710678,-0.70710678,0.70710678,-0.70710678,0,0)"><tspan
+         sodipodi:role="line"
+         x="-791.92743"
+         y="-800.0329"
+         id="tspan3079-0">Autumn</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:23.42828751px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-705.36713"
+       y="619.41492"
+       id="text3075-9"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"><tspan
+         sodipodi:role="line"
+         x="-705.36713"
+         y="619.41492"
+         id="tspan3079-4">Winter</tspan></text>
+  </g>
+</svg>
