@@ -46,6 +46,7 @@ function refresh() {
 }
 
 function load() {
+  var img_path = "../images/planet_clock/";
   imgBg.addEventListener("load", startIfLoaded);
   imgSun.addEventListener("load", startIfLoaded);
   imgSeasonRing.addEventListener("load", startIfLoaded);
@@ -59,18 +60,16 @@ function load() {
   imgMoon.addEventListener("load", startIfLoaded);
   imgMoonShadow.addEventListener("load", startIfLoaded);
   
-  imgBg.src             = '../images/background.svg'; // Set source path
-  imgSun.src            = '../images/sun.svg'; // Set source path
-  imgSeasonRing.src     = '../images/seasonring.svg'; // Set source path
-  imgMonthRing.src      = '../images/monthring.svg'; // Set source path
-  imgMonthHand.src      = '../images/monthhand.svg'; // Set source path
-  imgEarth.src          = '../images/earth.svg'; // Set source path
-  imgEarthShadow.src    = '../images/earthshadow.svg'; // Set source path
-  //imgHourRing.src       = '../images/hourring.svg'; // Set source path
-  //imgHourHand.src       = '../images/hourhand.svg'; // Set source path
-  imgMonthRing1to27.src = '../images/dayring1to27.svg'; // Set source path
-  imgMoon.src           = '../images/luna.svg'; // Set source path
-  imgMoonShadow.src     = '../images/lunareticle.svg'; // Set source path
+  imgBg.src             = img_path + 'background.svg'; // Set source path
+  imgSun.src            = img_path + 'sun.svg'; // Set source path
+  imgSeasonRing.src     = img_path + 'seasonring.svg'; // Set source path
+  imgMonthRing.src      = img_path + 'monthring.svg'; // Set source path
+  imgMonthHand.src      = img_path + 'monthhand.svg'; // Set source path
+  imgEarth.src          = img_path + 'earth.svg'; // Set source path
+  imgEarthShadow.src    = img_path + 'earthshadow.svg'; // Set source path
+  imgMonthRing1to27.src = img_path + 'dayring1to27.svg'; // Set source path
+  imgMoon.src           = img_path + 'luna.svg'; // Set source path
+  imgMoonShadow.src     = img_path + 'lunareticle.svg'; // Set source path
 }
 
 function startIfLoaded() {
