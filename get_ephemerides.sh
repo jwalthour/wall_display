@@ -12,7 +12,9 @@ function downloadSateliteRelToPrime {
 
   #  Date__(UT)__HR:MN, , ,R.A._(ICRF/J2000.0), DEC_(ICRF/J2000.0), dRA*cosD,d(DEC)/dt,            delta,     deldot,
   URL="http://ssd.jpl.nasa.gov/horizons_batch.cgi?batch=1&CENTER=$PRIME&COMMAND=%27$SATELLITE%27&MAKE_EPHEM=%27YES%27%20&TABLE_TYPE=%27OBSERVER%27&START_TIME=%27$TODAY%2000:00%27&STOP_TIME=%27$TODAY%2000:01%27&STEP_SIZE=%271%20d%27%20&QUANTITIES=%271,3,20%27&CSV_FORMAT=%27YES%27"
-  OUT=`curl $URL 2>/dev/null | grep -A1 "SOE" | tail -n 1 | sed 's/ *, */","/g' | sed 's/[\l\r\n]//g'`
+  echo $URL
+  OUT=`curl $URL 2>/dev/null | grep -A1 "SOE" | tail -n 1 | sed 's/ *, */","/g' | sed 's/[\r\n]//g'`
+  echo $OUT
   OUT=`printf "var $VARNAME=[\"%s\"];" "$OUT"`
   echo $OUT > $FILENAME
 }

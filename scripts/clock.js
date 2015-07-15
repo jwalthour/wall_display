@@ -1,4 +1,4 @@
-// This file assumes you've included:
+﻿// This file assumes you've included:
 //   earth.js
 //   luna.js
 var earth = loadEphemeris(earth_ephemeris);
@@ -31,10 +31,12 @@ var numLoaded = 0;
 var NUM_IMGS = 10;
 var timeRefd = 0;
 function refresh() {
-  //jogDay();
-  earthOrbitalLocationRad = getEarthOrbitalAngle() + earthWinterSolsticeDrawAngle;
-  earthRotationalAngle = getEarthRotationalAngle() + Math.PI / 2;
-  moonOrbitalLocationRad = Math.PI / 6.0 + Math.PI ; // currently sidereal
+  jogDay();
+  // jogHour();
+  earthOrbitalLocationRad = getEarthOrbitalAngle() + earthWinterSolsticeDrawAngle; // sidereal
+  earthRotationalAngle = getEarthRotationalAngle() + Math.PI / 2; // relative to the sun
+  moonOrbitalLocationRad = getMoonOrbitalAngle() ; // sidereal
+  moonOrbitalAngleAtStartOfMonth = getMoonOrbitalAngleAtStartOfMonth();
     
   var timeDiv = document.getElementById('time');
   now = getLocalTime();
@@ -42,7 +44,7 @@ function refresh() {
     "<br />" + (now.getHours() < 10? "0":"") + now.getHours() + ":" + (now.getMinutes() < 10? "0":"") + now.getMinutes();// + ":" + (now.getSeconds() < 10? "0":"") + now.getSeconds();
   
   draw();
-  setTimeout(function(){refresh();}, 10000);
+  setTimeout(function(){refresh();}, 1000);
 }
 
 function load() {
@@ -170,6 +172,7 @@ function draw() {
     ctx.rotate(earthOrbitalLocationRad);
     ctx.translate(0,-earthSunOrbitalRadius);
     ctx.rotate(-earthOrbitalLocationRad);
+    ctx.rotate(-moonOrbitalAngleAtStartOfMonth);
     ctx.drawImage(imgMonthRing1to27,-imgMonthRing1to27.width/2, -imgMonthRing1to27.height/2);
     
     // Hour hand
@@ -189,7 +192,7 @@ function draw() {
     ctx.translate(0,-earthSunOrbitalRadius);
     ctx.rotate(-earthOrbitalLocationRad);
     //ctx.rotate(earthSiderealAngle);
-    ctx.rotate(moonOrbitalLocationRad);
+    ctx.rotate(-moonOrbitalLocationRad);
     ctx.translate(0,moonOrbitalRadius);
     ctx.drawImage(imgMoon,-imgMoon.width/2, -imgMoon.height/2);
 
@@ -200,9 +203,9 @@ function draw() {
     ctx.translate(0,-earthSunOrbitalRadius);
     ctx.rotate(-earthOrbitalLocationRad);
     //ctx.rotate(earthSiderealAngle);
-    ctx.rotate(moonOrbitalLocationRad);
-    ctx.translate(0,moonOrbitalRadius);
     ctx.rotate(-moonOrbitalLocationRad);
+    ctx.translate(0,moonOrbitalRadius);
+    ctx.rotate(moonOrbitalLocationRad);
     //ctx.rotate(-earthSiderealAngle);
     ctx.rotate(earthOrbitalLocationRad);
     ctx.drawImage(imgMoonShadow,-imgMoonShadow.width/2, -imgMoonShadow.height/2);
@@ -213,7 +216,7 @@ function draw() {
 // in radians.
 function getEarthOrbitalAngle() {
   now = getUtcTime();
-  // The following method is based on the local clock
+  // The following method is based on the local clock rather than involving the ephemerides
 //  // Months are zero-indexed, days are one-indexed
 //  startOfYear = new Date(now.getFullYear(), 0, 1, 0, 0, 0, 0);
 //  thisYearsWinterSolstice = new Date(now.getFullYear(), 11, 21, 0, 0, 0, 0);
@@ -236,4 +239,27 @@ function getEarthRotationalAngle() {
   msAfterNoon = (nowMs - noonTodayMs) // may be negative
   msInToday = 24*60*60*1000; // will be one second off on leap-second days
   return -2 * Math.PI * (msAfterNoon / msInToday);
+}
+
+// Where the moon is in its orbit, relative to the celestial sphere
+function getMoonOrbitalAngle() {
+  now = getUtcTime();
+
+  // Figure out how long it's been since the last ephemeris
+  msAfterEphemeris = now - luna.dateOfEphemeris;
+  hoursAfterEphemeris = (msAfterEphemeris / 1000.0) / 3600.0;
+  radiansAfterEphemeris = (hoursAfterEphemeris * luna.siderialAngularVelocity);
+  return (luna.siderialAngle + radiansAfterEphemeris);
+}
+
+function getMoonOrbitalAngleAtStartOfMonth() {
+  // How far through the lunar orbital period was the ephemeris?
+  // Each ring is exactly one orbital period around, so we can
+  // map the moon's location at that time to that fraction of a circle.
+  ephemerisDate = new Date(luna.dateOfEphemeris);
+  dayOfMonth = ephemerisDate.getDate(); // May 1 is the 0th day
+  timeIntoMonth = dayOfMonth / LUNA_SIDEREAL_PERIOD_DAYS;
+  radiansIntoMonth = timeIntoMonth * (2 * Math.PI);
+  moonOrbitalAngleAtStartOfMonth = luna.siderialAngle - radiansIntoMonth;
+  return moonOrbitalAngleAtStartOfMonth;
 }

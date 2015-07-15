@@ -52,13 +52,17 @@ var dayOffset = 0;
 function jogDay() {
   dayOffset++;
 }
+var hourOffset = 0;
+function jogHour() {
+  hourOffset++;
+}
 
 function getLocalTime() {
   now = new Date();
   return new Date(now.getFullYear(),
     now.getMonth(),
     now.getDate() + dayOffset,
-    now.getHours(),
+    now.getHours() + hourOffset,
     now.getMinutes(),
     now.getSeconds());
 }
