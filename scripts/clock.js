@@ -32,7 +32,7 @@ var NUM_IMGS = 10;
 var timeRefd = 0;
 function refresh() {
   jogDay();
-  jogHour();
+  // jogHour();
   earthOrbitalLocationRad = getEarthOrbitalAngle() + earthWinterSolsticeDrawAngle; // sidereal
   earthRotationalAngle = getEarthRotationalAngle() + Math.PI / 2; // relative to the sun
   moonOrbitalLocationRad = getMoonOrbitalAngle() ; // sidereal
@@ -227,7 +227,8 @@ function getEarthOrbitalAngle() {
   // Figure out how long it's been since the last ephemeris
   msAfterEphemeris = now - earth.dateOfEphemeris;
   hoursAfterEphemeris = (msAfterEphemeris / 1000.0) / 3600.0;
-  radiansAfterEphemeris = (hoursAfterEphemeris * earth.siderialAngularVelocity);
+  // radiansAfterEphemeris = (hoursAfterEphemeris * earth.siderialAngularVelocity);
+  radiansAfterEphemeris = (hoursAfterEphemeris * (2 * Math.PI) / (EARTH_SIDEREAL_PERIOD_DAYS * 24));
   return (earth.siderialAngle + radiansAfterEphemeris) - earthWinterSolsticeAngle;
 }
 
@@ -248,7 +249,8 @@ function getMoonOrbitalAngle() {
   // Figure out how long it's been since the last ephemeris
   msAfterEphemeris = now - luna.dateOfEphemeris;
   hoursAfterEphemeris = (msAfterEphemeris / 1000.0) / 3600.0;
-  radiansAfterEphemeris = (hoursAfterEphemeris * luna.siderialAngularVelocity);
+  // radiansAfterEphemeris = (hoursAfterEphemeris * luna.siderialAngularVelocity);
+  radiansAfterEphemeris = (hoursAfterEphemeris * (2 * Math.PI) / (LUNA_SIDEREAL_PERIOD_DAYS * 24));
   return (luna.siderialAngle + radiansAfterEphemeris);
 }
 
