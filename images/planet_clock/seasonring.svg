@@ -14,7 +14,7 @@
    height="318.54022"
    id="svg3999"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="seasonring.svg"
    inkscape:export-filename="C:\Users\Antonio\Documents\orrery project\testsun.png"
    inkscape:export-xdpi="90"
@@ -56,7 +56,7 @@
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1366"
-     inkscape:window-height="706"
+     inkscape:window-height="705"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -72,7 +72,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -84,10 +84,10 @@
     <path
        inkscape:connector-curvature="0"
        id="path3041"
-       d="m 49.999998,843.86787 c -87.555413,0 -158.494348,70.93895 -158.494348,158.49443 0,87.5552 70.938935,158.4942 158.494348,158.4942 87.555422,0 158.494362,-70.939 158.494362,-158.4942 0,-87.55548 -70.93894,-158.49443 -158.494362,-158.49443 z m 0,43.38317 c 63.555692,0 115.111202,51.55551 115.111202,115.11126 0,63.5556 -51.55551,115.111 -115.111202,115.111 -63.555688,0 -115.111198,-51.5554 -115.111198,-115.111 0,-63.55575 51.55551,-115.11126 115.111198,-115.11126 z"
+       d="m 50.000012,843.86787 c 87.555418,0 158.494348,70.93895 158.494348,158.49443 0,87.5552 -70.93893,158.4942 -158.494348,158.4942 -87.555422,0 -158.494362,-70.939 -158.494362,-158.4942 0,-87.55548 70.93894,-158.49443 158.494362,-158.49443 z m 0,43.38317 c -63.555692,0 -115.111202,51.55551 -115.111202,115.11126 0,63.5556 51.55551,115.111 115.111202,115.111 63.555688,0 115.111198,-51.5554 115.111198,-115.111 0,-63.55575 -51.55551,-115.11126 -115.111198,-115.11126 z"
        style="fill:#989898;fill-opacity:1;stroke:#000000;stroke-width:1.55158913px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <g
-       transform="matrix(2.9165148,0,0,2.9165148,-498.9753,-2168.9457)"
+       transform="matrix(-2.9165148,0,0,2.9165148,598.97531,-2168.9457)"
        id="g3043">
       <path
          inkscape:connector-curvature="0"
@@ -114,51 +114,51 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:23.42828751px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="705.44501"
-       y="544.90991"
+       style="font-style:normal;font-weight:normal;font-size:23.42828751px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="634.73431"
+       y="615.62061"
        id="text3075"
        sodipodi:linespacing="125%"
-       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"><tspan
+       transform="matrix(-0.70710678,0.70710678,0.70710678,0.70710678,0,0)"><tspan
          sodipodi:role="line"
-         x="705.44501"
-         y="544.90991"
+         x="634.73431"
+         y="615.62061"
          id="tspan3079">Spring</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:23.42828751px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="620.40894"
-       y="-870.14404"
+       style="font-style:normal;font-weight:normal;font-size:23.42828751px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="691.11963"
+       y="-799.43335"
        id="text3075-1"
        sodipodi:linespacing="125%"
-       transform="matrix(-0.70710678,0.70710678,-0.70710678,-0.70710678,0,0)"><tspan
+       transform="matrix(0.70710678,0.70710678,0.70710678,-0.70710678,0,0)"><tspan
          sodipodi:role="line"
-         x="620.40894"
-         y="-870.14404"
+         x="691.11963"
+         y="-799.43335"
          id="tspan3079-7">Summer</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:23.42828751px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-791.92743"
-       y="-800.0329"
+       style="font-style:normal;font-weight:normal;font-size:23.42828751px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="-721.21674"
+       y="-870.74359"
        id="text3075-4"
        sodipodi:linespacing="125%"
-       transform="matrix(-0.70710678,-0.70710678,0.70710678,-0.70710678,0,0)"><tspan
+       transform="matrix(0.70710678,-0.70710678,-0.70710678,-0.70710678,0,0)"><tspan
          sodipodi:role="line"
-         x="-791.92743"
-         y="-800.0329"
+         x="-721.21674"
+         y="-870.74359"
          id="tspan3079-0">Autumn</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:23.42828751px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-705.36713"
-       y="619.41492"
+       style="font-style:normal;font-weight:normal;font-size:23.42828751px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="-776.07782"
+       y="548.70422"
        id="text3075-9"
        sodipodi:linespacing="125%"
-       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"><tspan
+       transform="matrix(-0.70710678,-0.70710678,-0.70710678,0.70710678,0,0)"><tspan
          sodipodi:role="line"
-         x="-705.36713"
-         y="619.41492"
+         x="-776.07782"
+         y="548.70422"
          id="tspan3079-4">Winter</tspan></text>
   </g>
 </svg>
