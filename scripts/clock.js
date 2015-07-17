@@ -32,12 +32,12 @@ var numLoaded = 0;
 var NUM_IMGS = 11;
 var timeRefd = 0;
 function refresh() {
-  jogDay();
+  // jogDay();
   // jogHour();
   earthOrbitalLocationRad = getEarthOrbitalAngle() + earthWinterSolsticeDrawAngle; // sidereal
   earthRotationalAngle = getEarthRotationalAngle() + Math.PI / 2; // relative to the sun
-  moonOrbitalLocationRad = getMoonOrbitalAngle() ; // sidereal
-  moonOrbitalAngleAtStartOfMonth = getMoonOrbitalAngleAtStartOfMonth();
+  moonOrbitalLocationRad = getMoonOrbitalAngle() + earthWinterSolsticeDrawAngle ; // sidereal
+  moonOrbitalAngleAtStartOfMonth = getMoonOrbitalAngleAtStartOfMonth() + earthWinterSolsticeDrawAngle;
     
   var timeDiv = document.getElementById('time');
   now = getLocalTime();
@@ -45,7 +45,7 @@ function refresh() {
     "<br />" + (now.getHours() < 10? "0":"") + now.getHours() + ":" + (now.getMinutes() < 10? "0":"") + now.getMinutes();// + ":" + (now.getSeconds() < 10? "0":"") + now.getSeconds();
   
   draw();
-  setTimeout(function(){refresh();}, 1000);
+  setTimeout(function(){refresh();}, 10000);
 }
 
 function load() {
