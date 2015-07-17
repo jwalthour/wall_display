@@ -5,7 +5,7 @@ var earth = loadEphemeris(earth_ephemeris);
 var luna  = loadEphemeris(luna_ephemeris);
 
 var earthSunOrbitalRadius = 225;
-var moonOrbitalRadius = 100;
+var moonOrbitalRadius = 110;
 var earthAxialTilt = 20.0; // degrees
 var nPoleShiftDueToAxialTilt = earthAxialTilt / 180.0; // As a fraction of the image width (for an image showing the entire globe as an azimuthal projection)
 var observerLongitudeRad = -79 * Math.PI / 180;
@@ -24,11 +24,12 @@ var imgEarthShadow = new Image();
 var imgHourRing = new Image();
 var imgHourHand = new Image();
 var imgMonthRing1to27 = new Image();
+var imgMonthRing5to31 = new Image();
 var imgMoon = new Image();
 var imgMoonShadow = new Image();
 
 var numLoaded = 0;
-var NUM_IMGS = 10;
+var NUM_IMGS = 11;
 var timeRefd = 0;
 function refresh() {
   jogDay();
@@ -59,6 +60,7 @@ function load() {
   //imgHourRing.addEventListener("load", startIfLoaded);
   //imgHourHand.addEventListener("load", startIfLoaded);
   imgMonthRing1to27.addEventListener("load", startIfLoaded);
+  imgMonthRing5to31.addEventListener("load", startIfLoaded);
   imgMoon.addEventListener("load", startIfLoaded);
   imgMoonShadow.addEventListener("load", startIfLoaded);
   
@@ -70,6 +72,7 @@ function load() {
   imgEarth.src          = img_path + 'earth.svg'; // Set source path
   imgEarthShadow.src    = img_path + 'earthshadow.svg'; // Set source path
   imgMonthRing1to27.src = img_path + 'dayring1to27.svg'; // Set source path
+  imgMonthRing5to31.src = img_path + 'dayring5to31.svg'; // Set source path
   imgMoon.src           = img_path + 'luna.svg'; // Set source path
   imgMoonShadow.src     = img_path + 'lunareticle.svg'; // Set source path
 }
@@ -173,7 +176,8 @@ function draw() {
     ctx.translate(0,-earthSunOrbitalRadius);
     ctx.rotate(earthOrbitalLocationRad);
     ctx.rotate(-moonOrbitalAngleAtStartOfMonth);
-    ctx.drawImage(imgMonthRing1to27,-imgMonthRing1to27.width/2, -imgMonthRing1to27.height/2);
+    imgDayRing = getDayRing();
+    ctx.drawImage(imgDayRing,-imgDayRing.width/2, -imgDayRing.height/2);
     
     // Hour hand
     //ctx.setTransform(1,0,0,1,0,0);
@@ -259,9 +263,14 @@ function getMoonOrbitalAngleAtStartOfMonth() {
   // Each ring is exactly one orbital period around, so we can
   // map the moon's location at that time to that fraction of a circle.
   ephemerisDate = new Date(luna.dateOfEphemeris);
-  dayOfMonth = ephemerisDate.getDate(); // May 1 is the 0th day
+  dayOfMonth = ephemerisDate.getUTCDate() - 1; // May 1 is the 0th day
   timeIntoMonth = dayOfMonth / LUNA_SIDEREAL_PERIOD_DAYS;
   radiansIntoMonth = timeIntoMonth * (2 * Math.PI);
   moonOrbitalAngleAtStartOfMonth = luna.siderialAngle - radiansIntoMonth;
   return moonOrbitalAngleAtStartOfMonth;
+}
+
+function getDayRing() {
+  var today = new Date(getUtcTime()).getUTCDate();
+  return today > 15? imgMonthRing5to31:imgMonthRing1to27;
 }
