@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import time
 import RPi.GPIO as GPIO
 from subprocess import call
 
@@ -51,7 +52,7 @@ GPIO.add_event_detect(PS_SWITCH_PIN, GPIO.BOTH, callback=setPowersave, bouncetim
 
 try:
 	while True:
-		pass
+		time.sleep(1)
 except:# KeyboardException:
 	print ("Got a ctrl-c")
 finally:
