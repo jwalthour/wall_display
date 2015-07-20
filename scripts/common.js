@@ -84,3 +84,15 @@ Date.prototype.dst = function() {
     return this.getTimezoneOffset() < this.stdTimezoneOffset();
 }
 
+function enterFullscreen() {
+  var elem = document.getElementById("canvas");
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    elem.msRequestFullscreen();
+  } else if (elem.mozRequestFullScreen) {
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  }
+}

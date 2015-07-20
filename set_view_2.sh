@@ -1,3 +1,3 @@
 #!/bin/bash
-(echo 'content.location.href="file:///home/pi/wall_display/views/weather.html"'; sleep 10) | telnet localhost 7070
+{ echo 'content.location.href="file:///home/pi/wall_display/views/weather.html"'; echo 'window.fullScreen = true'; echo 'document.getElementById("toolbar-menubar").hidden = true'; sleep 10 } | telnet localhost 7070
 
