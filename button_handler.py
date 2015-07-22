@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import time
 import RPi.GPIO as GPIO
 from subprocess import call
 
@@ -20,20 +21,15 @@ GPIO.setup(PS_SWITCH_PIN, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 def activateScreen(pin):
 	if pin == BUTTON_0_PIN:
-		call(["/home/pi/display/enter_fullscreen.sh"])
-		call(["/home/pi/display/set_view_0.sh"])
+		call(["bash", "/home/pi/display/set_view_0.sh"])
 	elif pin == BUTTON_1_PIN:
-		call(["/home/pi/display/enter_fullscreen.sh"])
-		call(["/home/pi/display/set_view_1.sh"])
+		call(["bash", "/home/pi/display/set_view_1.sh"])
 	elif pin == BUTTON_2_PIN:
-		call(["/home/pi/display/enter_fullscreen.sh"])
-		call(["/home/pi/display/set_view_2.sh"])
+		call(["bash", "/home/pi/display/set_view_2.sh"])
 	elif pin == BUTTON_3_PIN:
-		call(["/home/pi/display/enter_fullscreen.sh"])
-		call(["/home/pi/display/set_view_3.sh"])
+		call(["bash", "/home/pi/display/set_view_3.sh"])
 	elif pin == BUTTON_4_PIN:
-		call(["/home/pi/display/enter_fullscreen.sh"])
-		call(["/home/pi/display/set_view_4.sh"])
+		call(["bash", "/home/pi/display/set_view_4.sh"])
 
 def setPowersave(pin):
 	if GPIO.input(pin):
@@ -51,7 +47,7 @@ GPIO.add_event_detect(PS_SWITCH_PIN, GPIO.BOTH, callback=setPowersave, bouncetim
 
 try:
 	while True:
-		pass
+		time.sleep(1)
 except:# KeyboardException:
 	print ("Got a ctrl-c")
 finally:
