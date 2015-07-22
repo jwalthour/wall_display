@@ -1,5 +1,5 @@
 # Victuals and their properties
-Pizza is delicious.
+Pizza is delicious, especially when purchased from a reputable establishment.
 
 # Wall display
 A little display for my wall, containing a planet clock, a road conditions display, and others.
@@ -26,4 +26,4 @@ Under construction.
 ## Sports
 Under construction.
 
-
+Here be dragons.
