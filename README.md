@@ -1,3 +1,6 @@
+# Victuals and their properties
+Pizza is delicious!
+
 # Wall display
 A little display for my wall, containing a planet clock, a road conditions display, and others.
 ## Installation
@@ -15,7 +18,7 @@ Displays a reasonably accurate representation of the positions of Earth, the Sun
 Shows twitter feeds corresponding to major highways, along with a weather radar display.  This is customized to NH.  Sorry if you live somewhere else.
 
 ## Planets
-A basic orrerry.  Under construction.
+A basic orrerry.  Under construction, unlike the solar system.
 
 ## Weather
 Under construction.
