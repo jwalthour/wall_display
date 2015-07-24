@@ -46,7 +46,7 @@ function refresh() {
     "<br />" + (now.getHours() < 10? "0":"") + now.getHours() + ":" + (now.getMinutes() < 10? "0":"") + now.getMinutes();// + ":" + (now.getSeconds() < 10? "0":"") + now.getSeconds();
   
   draw();
-  setTimeout(function(){refresh();}, 100);
+  setTimeout(function(){refresh();}, 10000);
 }
 
 function load() {
