@@ -56,6 +56,10 @@ var hourOffset = 0;
 function jogHour() {
   hourOffset++;
 }
+var minuteOffset = 0;
+function jogMinute() {
+  minuteOffset++;
+}
 
 function getLocalTime() {
   now = new Date();
@@ -63,7 +67,7 @@ function getLocalTime() {
     now.getMonth(),
     now.getDate() + dayOffset,
     now.getHours() + hourOffset,
-    now.getMinutes(),
+    now.getMinutes() + minuteOffset,
     now.getSeconds());
 }
 

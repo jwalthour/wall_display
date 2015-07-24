@@ -34,8 +34,9 @@ var timeRefd = 0;
 function refresh() {
   // jogDay();
   // jogHour();
+  // jogMinute();
   earthOrbitalLocationRad = getEarthOrbitalAngle() + earthWinterSolsticeDrawAngle; // sidereal
-  earthRotationalAngle = getEarthRotationalAngle() + Math.PI / 2; // relative to the sun
+  earthRotationalAngle = getEarthRotationalAngle(); // relative to the sun
   moonOrbitalLocationRad = getMoonOrbitalAngle() + earthWinterSolsticeDrawAngle ; // sidereal
   moonOrbitalAngleAtStartOfMonth = getMoonOrbitalAngleAtStartOfMonth() + earthWinterSolsticeDrawAngle;
     
@@ -45,7 +46,7 @@ function refresh() {
     "<br />" + (now.getHours() < 10? "0":"") + now.getHours() + ":" + (now.getMinutes() < 10? "0":"") + now.getMinutes();// + ":" + (now.getSeconds() < 10? "0":"") + now.getSeconds();
   
   draw();
-  setTimeout(function(){refresh();}, 10000);
+  setTimeout(function(){refresh();}, 100);
 }
 
 function load() {
@@ -58,7 +59,7 @@ function load() {
   imgEarth.addEventListener("load", startIfLoaded);
   imgEarthShadow.addEventListener("load", startIfLoaded);
   //imgHourRing.addEventListener("load", startIfLoaded);
-  //imgHourHand.addEventListener("load", startIfLoaded);
+  imgHourHand.addEventListener("load", startIfLoaded);
   imgMonthRing1to27.addEventListener("load", startIfLoaded);
   imgMonthRing5to31.addEventListener("load", startIfLoaded);
   imgMoon.addEventListener("load", startIfLoaded);
@@ -71,6 +72,7 @@ function load() {
   imgMonthHand.src      = img_path + 'monthhand.svg'; // Set source path
   imgEarth.src          = img_path + 'earth.svg'; // Set source path
   imgEarthShadow.src    = img_path + 'earthshadow.svg'; // Set source path
+  imgHourHand.src       = img_path + 'hourhand.svg'; // Set source path
   imgMonthRing1to27.src = img_path + 'dayring1to27.svg'; // Set source path
   imgMonthRing5to31.src = img_path + 'dayring5to31.svg'; // Set source path
   imgMoon.src           = img_path + 'luna.svg'; // Set source path
@@ -151,9 +153,9 @@ function draw() {
     ctx.rotate(earthRotationalAngle);
     ctx.drawImage(imgEarth,-imgEarth.width/2, -imgEarth.height/2);
 
-    ctx.rotate(earthOrbitalLocationRad);
-    ctx.translate(0, imgEarth.width * nPoleShiftDueToAxialTilt);
-    ctx.rotate(-earthOrbitalLocationRad);
+      // ctx.rotate(earthOrbitalLocationRad);
+      // ctx.translate(0, imgEarth.width * nPoleShiftDueToAxialTilt);
+      // ctx.rotate(-earthOrbitalLocationRad);
     
     // Earth shadow
     ctx.setTransform(1,0,0,1,0,0);
@@ -180,14 +182,14 @@ function draw() {
     ctx.drawImage(imgDayRing,-imgDayRing.width/2, -imgDayRing.height/2);
     
     // Hour hand
-    //ctx.setTransform(1,0,0,1,0,0);
-    //ctx.translate(center.x, center.y);
-    //ctx.rotate(earthOrbitalLocationRad);
-    //ctx.translate(0,-earthSunOrbitalRadius);
-//  //  ctx.translate(0, imgEarth.width * nPoleShiftDueToAxialTilt);
-    //ctx.rotate(earthRotationalAngle);
-    //ctx.rotate(-observerLongitudeRad);
-    //ctx.drawImage(imgHourHand,-imgHourHand.width/2, -imgHourHand.height/2);
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.translate(center.x, center.y);
+    ctx.rotate(-earthOrbitalLocationRad);
+    ctx.translate(0,-earthSunOrbitalRadius);
+ //  ctx.translate(0, imgEarth.width * nPoleShiftDueToAxialTilt);
+    ctx.rotate(earthRotationalAngle);
+    ctx.rotate(-observerLongitudeRad);
+    ctx.drawImage(imgHourHand,-imgHourHand.width/2, -imgHourHand.height/2);
   
     // Moon
     ctx.setTransform(1,0,0,1,0,0);
