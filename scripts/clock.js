@@ -238,14 +238,15 @@ function getEarthOrbitalAngle() {
   return (earth.siderialAngle + radiansAfterEphemeris) - earthWinterSolsticeAngle;
 }
 
-// The angle of the prime meridian with respect to noon
+// The angle of the prime meridian with respect to midnight
 function getEarthRotationalAngle() {
   now = getLocalTime();
-  nowMs = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
-  noonTodayMs = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 12, 0, 0);
-  msAfterNoon = (nowMs - noonTodayMs) // may be negative
+  dstOffset = (new Date()).dst()? 1 : 0;
+  nowMs = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours() + dstOffset, now.getUTCMinutes(), now.getUTCSeconds());
+  midnightTodayMs = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 0, 0, 0);
+  msAfterMidnight = (nowMs - midnightTodayMs) // may be negative
   msInToday = 24*60*60*1000; // will be one second off on leap-second days
-  return -2 * Math.PI * (msAfterNoon / msInToday);
+  return -2 * Math.PI * (msAfterMidnight / msInToday);
 }
 
 // Where the moon is in its orbit, relative to the celestial sphere
