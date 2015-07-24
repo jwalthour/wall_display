@@ -58,7 +58,7 @@ function load() {
   imgMonthHand.addEventListener("load", startIfLoaded);
   imgEarth.addEventListener("load", startIfLoaded);
   imgEarthShadow.addEventListener("load", startIfLoaded);
-  //imgHourRing.addEventListener("load", startIfLoaded);
+  imgHourRing.addEventListener("load", startIfLoaded);
   imgHourHand.addEventListener("load", startIfLoaded);
   imgMonthRing1to27.addEventListener("load", startIfLoaded);
   imgMonthRing5to31.addEventListener("load", startIfLoaded);
@@ -72,6 +72,7 @@ function load() {
   imgMonthHand.src      = img_path + 'monthhand.svg'; // Set source path
   imgEarth.src          = img_path + 'earth.svg'; // Set source path
   imgEarthShadow.src    = img_path + 'earthshadow.svg'; // Set source path
+  imgHourRing.src       = img_path + 'hourring.svg'; // Set source path
   imgHourHand.src       = img_path + 'hourhand.svg'; // Set source path
   imgMonthRing1to27.src = img_path + 'dayring1to27.svg'; // Set source path
   imgMonthRing5to31.src = img_path + 'dayring5to31.svg'; // Set source path
@@ -165,11 +166,11 @@ function draw() {
     ctx.drawImage(imgEarthShadow,-imgEarthShadow.width/2, -imgEarthShadow.height/2);
     
     // Hour ring
-    //ctx.setTransform(1,0,0,1,0,0);
-    //ctx.translate(center.x, center.y);
-    //ctx.rotate(earthOrbitalLocationRad);
-    //ctx.translate(0,-earthSunOrbitalRadius);
-    //ctx.drawImage(imgHourRing,-imgHourRing.width/2, -imgHourRing.height/2);
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.translate(center.x, center.y);
+    ctx.rotate(-earthOrbitalLocationRad);
+    ctx.translate(0,-earthSunOrbitalRadius);
+    ctx.drawImage(imgHourRing,-imgHourRing.width/2, -imgHourRing.height/2);
     
     // Day ring
     ctx.setTransform(1,0,0,1,0,0);
