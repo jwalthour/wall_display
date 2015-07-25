@@ -21,15 +21,15 @@ GPIO.setup(PS_SWITCH_PIN, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 def activateScreen(pin):
 	if pin == BUTTON_0_PIN:
-		call(["bash", "/home/pi/display/set_view_0.sh"])
+		call(["bash", "/home/pi/wall_display/set_view_0.sh"])
 	elif pin == BUTTON_1_PIN:
-		call(["bash", "/home/pi/display/set_view_1.sh"])
+		call(["bash", "/home/pi/wall_display/set_view_1.sh"])
 	elif pin == BUTTON_2_PIN:
-		call(["bash", "/home/pi/display/set_view_2.sh"])
+		call(["bash", "/home/pi/wall_display/set_view_2.sh"])
 	elif pin == BUTTON_3_PIN:
-		call(["bash", "/home/pi/display/set_view_3.sh"])
+		call(["bash", "/home/pi/wall_display/set_view_3.sh"])
 	elif pin == BUTTON_4_PIN:
-		call(["bash", "/home/pi/display/set_view_4.sh"])
+		call(["bash", "/home/pi/wall_display/set_view_4.sh"])
 
 def setPowersave(pin):
 	if GPIO.input(pin):
