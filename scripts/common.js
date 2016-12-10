@@ -47,28 +47,36 @@ function loadEphemeris(rawEphemArray) {
   return retval;
 }
 
-// For debugging; have the capability to offset by one day
-var dayOffset = 0;
-function jogDay() {
-  dayOffset++;
-}
-var hourOffset = 0;
-function jogHour() {
-  hourOffset++;
-}
 
 function getLocalTime() {
   now = new Date();
   return new Date(now.getFullYear(),
     now.getMonth(),
-    now.getDate() + dayOffset,
-    now.getHours() + hourOffset,
+    now.getDate(),
+    now.getHours(),
     now.getMinutes(),
     now.getSeconds());
 }
 
+var debugTime = null
+
+// Return the time to show literally to the user
+// as a date object
+function getDisplayTime() {
+  return debugTime? debugTime:getLocalTime();
+}
+
+// Return the time on which to base the positions of heavenly bodies
+function getHeavenlyTime() {
+  return new Date(getHeavenlyTimeMs());
+}
+// in ms since epoch
+function getHeavenlyTimeMs() {
+  return getUtcTime();
+}
+// in ms since epoch
 function getUtcTime() {
-  now = getLocalTime();
+  now = debugTime? debugTime:getLocalTime();
   nowMs = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
   return nowMs;
 }

@@ -32,20 +32,18 @@ var numLoaded = 0;
 var NUM_IMGS = 11;
 var timeRefd = 0;
 function refresh() {
-  // jogDay();
-  // jogHour();
   earthOrbitalLocationRad = getEarthOrbitalAngle() + earthWinterSolsticeDrawAngle; // sidereal
   earthRotationalAngle = getEarthRotationalAngle() + Math.PI / 2; // relative to the sun
   moonOrbitalLocationRad = getMoonOrbitalAngle() + earthWinterSolsticeDrawAngle ; // sidereal
   moonOrbitalAngleAtStartOfMonth = getMoonOrbitalAngleAtStartOfMonth() + earthWinterSolsticeDrawAngle;
     
   var timeDiv = document.getElementById('time');
-  now = getLocalTime();
+  now = getDisplayTime();
   timeDiv.innerHTML = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + 
     "<br />" + (now.getHours() < 10? "0":"") + now.getHours() + ":" + (now.getMinutes() < 10? "0":"") + now.getMinutes();// + ":" + (now.getSeconds() < 10? "0":"") + now.getSeconds();
   
   draw();
-  setTimeout(function(){refresh();}, 10000);
+  // setTimeout(function(){refresh();}, 10000);
 }
 
 function load() {
@@ -82,6 +80,7 @@ function startIfLoaded() {
     refresh();
   }
 }
+
 
 function draw() {
   var container = document.getElementById('container');
@@ -218,8 +217,8 @@ function draw() {
 
 // The angle of the earth-sun line with respect to the winter solstice
 // in radians.
-function getEarthOrbitalAngle() {
-  now = getUtcTime();
+function getEarthOrbitalAngle(now = null) {
+  now = getHeavenlyTimeMs();
   // The following method is based on the local clock rather than involving the ephemerides
 //  // Months are zero-indexed, days are one-indexed
 //  startOfYear = new Date(now.getFullYear(), 0, 1, 0, 0, 0, 0);
@@ -238,8 +237,8 @@ function getEarthOrbitalAngle() {
 
 // The angle of the prime meridian with respect to noon
 function getEarthRotationalAngle() {
-  now = getLocalTime();
-  nowMs = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+  nowMs = getHeavenlyTimeMs();
+  now = getHeavenlyTime();
   noonTodayMs = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 12, 0, 0);
   msAfterNoon = (nowMs - noonTodayMs) // may be negative
   msInToday = 24*60*60*1000; // will be one second off on leap-second days
@@ -248,7 +247,7 @@ function getEarthRotationalAngle() {
 
 // Where the moon is in its orbit, relative to the celestial sphere
 function getMoonOrbitalAngle() {
-  now = getUtcTime();
+  now = getHeavenlyTimeMs();
 
   // Figure out how long it's been since the last ephemeris
   msAfterEphemeris = now - luna.dateOfEphemeris;
@@ -271,6 +270,21 @@ function getMoonOrbitalAngleAtStartOfMonth() {
 }
 
 function getDayRing() {
-  var today = new Date(getUtcTime()).getUTCDate();
+  var today = getHeavenlyTime().getUTCDate();
   return today > 15? imgMonthRing5to31:imgMonthRing1to27;
+}
+
+function setDebugTime() {
+  var year  = Number(document.getElementById('input_year').value); 
+  var month = Number(document.getElementById('input_month').value);
+  var day   = Number(document.getElementById('input_day').value);
+  var hour  = Number(document.getElementById('input_hour').value);
+  var min   = Number(document.getElementById('input_min').value);
+  var sec   = Number(document.getElementById('input_sec').value);
+  debugTime = new Date(year, month-1, day, hour, min, sec);
+  refresh();
+}
+function clearDebugTime() {
+  debugTime = null;
+  refresh();
 }
