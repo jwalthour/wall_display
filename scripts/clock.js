@@ -81,7 +81,7 @@ function startIfLoaded() {
   }
 }
 
-
+var DEBUG_IMAGES = true;
 function draw() {
   var container = document.getElementById('container');
   var canvas = document.getElementById('canvas');
@@ -135,21 +135,41 @@ function draw() {
     ctx.translate(0,earthSunOrbitalRadius);
     ctx.rotate(earthOrbitalLocationRad);
     var bgWidthHeight = canvasLargerDim + 2 * earthSunOrbitalRadius;
-    ctx.drawImage(imgBg,-bgWidthHeight/2, -bgWidthHeight/2, bgWidthHeight, bgWidthHeight);
-    ctx.drawImage(imgSeasonRing,-imgSeasonRing.width/2, -imgSeasonRing.height/2);
-    ctx.drawImage(imgMonthRing,-imgMonthRing.width/2, -imgMonthRing.height/2);
+    // if(DEBUG_IMAGES) {
+      
+    // } else {
+      ctx.drawImage(imgBg,-bgWidthHeight/2, -bgWidthHeight/2, bgWidthHeight, bgWidthHeight);
+      ctx.drawImage(imgSeasonRing,-imgSeasonRing.width/2, -imgSeasonRing.height/2);
+      ctx.drawImage(imgMonthRing,-imgMonthRing.width/2, -imgMonthRing.height/2);
+    // }
     ctx.rotate(-earthOrbitalLocationRad);
-    ctx.drawImage(imgMonthHand,-imgMonthHand.width/2, -imgMonthHand.height/2);
-    ctx.drawImage(imgSun,-imgSun.width/2, -imgSun.height/2);
+    // if(DEBUG_IMAGES) {
 
+    // } else {
+      ctx.drawImage(imgMonthHand,-imgMonthHand.width/2, -imgMonthHand.height/2);
+      ctx.drawImage(imgSun,-imgSun.width/2, -imgSun.height/2);
+    // }
     // Earth
     ctx.setTransform(1,0,0,1,0,0);
     ctx.translate(center.x, center.y);
     ctx.rotate(-earthOrbitalLocationRad);
     ctx.translate(0,-earthSunOrbitalRadius);
     ctx.rotate(earthRotationalAngle);
-    ctx.drawImage(imgEarth,-imgEarth.width/2, -imgEarth.height/2);
-
+    if(DEBUG_IMAGES) {
+      ctx.fillStyle = "#FFFFFF";
+      ctx.strokeStyle="";
+      ctx.beginPath();
+        ctx.arc(0, 0, imgEarth.width/2, 0,  2 * Math.PI, false);
+      ctx.fill();
+      
+      ctx.strokeStyle="#000000";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+        ctx.moveTo(0, 0); ctx.lineTo(0, -imgEarth.height/2);
+      ctx.stroke();
+    } else {
+      ctx.drawImage(imgEarth,-imgEarth.width/2, -imgEarth.height/2);
+    }
     ctx.rotate(earthOrbitalLocationRad);
     ctx.translate(0, imgEarth.width * nPoleShiftDueToAxialTilt);
     ctx.rotate(-earthOrbitalLocationRad);
@@ -159,8 +179,11 @@ function draw() {
     ctx.translate(center.x, center.y);
     ctx.rotate(-earthOrbitalLocationRad);
     ctx.translate(0,-earthSunOrbitalRadius);
-    ctx.drawImage(imgEarthShadow,-imgEarthShadow.width/2, -imgEarthShadow.height/2);
-    
+    if(DEBUG_IMAGES) {
+      
+    } else {
+      ctx.drawImage(imgEarthShadow,-imgEarthShadow.width/2, -imgEarthShadow.height/2);
+    }    
     // Hour ring
     //ctx.setTransform(1,0,0,1,0,0);
     //ctx.translate(center.x, center.y);
@@ -176,8 +199,11 @@ function draw() {
     ctx.rotate(earthOrbitalLocationRad);
     ctx.rotate(-moonOrbitalAngleAtStartOfMonth);
     imgDayRing = getDayRing();
-    ctx.drawImage(imgDayRing,-imgDayRing.width/2, -imgDayRing.height/2);
-    
+    if(DEBUG_IMAGES) {
+      
+    } else {
+      ctx.drawImage(imgDayRing,-imgDayRing.width/2, -imgDayRing.height/2);
+    }    
     // Hour hand
     //ctx.setTransform(1,0,0,1,0,0);
     //ctx.translate(center.x, center.y);
@@ -197,8 +223,11 @@ function draw() {
     //ctx.rotate(earthSiderealAngle);
     ctx.rotate(-moonOrbitalLocationRad);
     ctx.translate(0,moonOrbitalRadius);
-    ctx.drawImage(imgMoon,-imgMoon.width/2, -imgMoon.height/2);
-
+    if(DEBUG_IMAGES) {
+      
+    } else {
+      ctx.drawImage(imgMoon,-imgMoon.width/2, -imgMoon.height/2);
+    }
     // Moon decorations
     ctx.setTransform(1,0,0,1,0,0);
     ctx.translate(center.x, center.y);
@@ -211,8 +240,12 @@ function draw() {
     ctx.rotate(moonOrbitalLocationRad);
     //ctx.rotate(-earthSiderealAngle);
     ctx.rotate(-earthOrbitalLocationRad);
-    ctx.drawImage(imgMoonShadow,-imgMoonShadow.width/2, -imgMoonShadow.height/2);
-	}
+    if(DEBUG_IMAGES) {
+      
+    } else {
+      ctx.drawImage(imgMoonShadow,-imgMoonShadow.width/2, -imgMoonShadow.height/2);
+    }
+  }
 }
 
 // The angle of the earth-sun line with respect to the winter solstice
