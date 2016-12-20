@@ -6,47 +6,6 @@ function rightAscensionStringToRadians(raString) {
   return raArcseconds * ((2 * Math.PI) / (24 * 3600));
 }
 
-// Takes in a raw ephemeris array that was downloaded from the server.
-// Returns an object with all those values parsed and converted
-function loadEphemeris(rawEphemArray) {
-  var retval = {
-    siderialAngle:null, // "heading" from the prime to the satellite, in radians
-    siderialAngularVelocity:null, // rate of change in the "heading", in radians per hour
-    dateOfEphemeris:null, // The date and time that this body was said to be at this location
-  };
-  
-  // Parse date
-  reformattedDate = rawEphemArray[0].substring(1).replace(' ', 'T')
-    .replace("Jan", "01")
-    .replace("Feb", "02")
-    .replace("Mar", "03")
-    .replace("Apr", "04")
-    .replace("May", "05")
-    .replace("Jun", "06")
-    .replace("Jul", "07")
-    .replace("Aug", "08")
-    .replace("Sep", "09")
-    .replace("Oct", "10")
-    .replace("Nov", "11")
-    .replace("Dec", "12");
-  retval.dateOfEphemeris = new Date(reformattedDate);
-
-  // Parse right ascension
-  retval.siderialAngle = rightAscensionStringToRadians(rawEphemArray[3]);
-  
-  // Parse declination - HORIZONS provides dRA/dt multiplied by cos(declination) for some reason
-  // Note that the declination is listed with a sign but in this case we don't care what it is,
-  // so we trim it off.
-  declParts = rawEphemArray[4].substring(1).split(' ');
-  declArcseconds = (parseInt(declParts[0]) * 3600) + (parseInt(declParts[1]) * 60) + parseFloat(declParts[2]);
-  declRadians = declArcseconds * ((2.0 * Math.PI) / (360.0 * 3600.0));
-  cosDecl = Math.cos(declRadians);
-  raRateArcsecondsPerHour = parseFloat(rawEphemArray[5]) / cosDecl;
-  retval.siderialAngularVelocity = raRateArcsecondsPerHour * ((2.0 * Math.PI) / (360.0 * 3600.0));
-  
-  return retval;
-}
-
 
 function getLocalTime() {
   now = new Date();

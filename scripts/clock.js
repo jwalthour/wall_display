@@ -1,17 +1,12 @@
-﻿// This file assumes you've included:
-//   earth.js
-//   luna.js
-var earth = loadEphemeris(earth_ephemeris);
-var luna  = loadEphemeris(luna_ephemeris);
-
-var earthSunOrbitalRadius = 225;
+﻿var earthSunOrbitalRadius = 225;
 var moonOrbitalRadius = 110;
 var earthAxialTilt = 20.0; // degrees
 var nPoleShiftDueToAxialTilt = earthAxialTilt / 180.0; // As a fraction of the image width (for an image showing the entire globe as an azimuthal projection)
 var observerLongitudeRad = -79 * Math.PI / 180;
 // Taken from the HORIZONS ephemeris for the 2014 solstice, which was at 2014-12-23 23:03 UTC.
 var earthWinterSolsticeAngle = rightAscensionStringToRadians("06 07 57.94");
-// The angle at which we draw the winter solstice (for offsets later)
+// The angle at which we draw the winter solstice, in navigator's convention.
+// This is the "reference angle" for the clock.
 var earthWinterSolsticeDrawAngle = -Math.PI / 2;
 
 var imgBg = new Image();
@@ -251,21 +246,13 @@ function draw() {
 // The angle of the earth-sun line with respect to the winter solstice
 // in radians.
 function getEarthOrbitalAngle(now = null) {
-  now = getHeavenlyTimeMs();
-  // The following method is based on the local clock rather than involving the ephemerides
-//  // Months are zero-indexed, days are one-indexed
-//  startOfYear = new Date(now.getFullYear(), 0, 1, 0, 0, 0, 0);
-//  thisYearsWinterSolstice = new Date(now.getFullYear(), 11, 21, 0, 0, 0, 0);
-//  msAfterSolstice = (now - thisYearsWinterSolstice); // may be negative
-//  msInYear = (new Date(now.getFullYear(), 11, 30, 23, 59, 59, 999)) - startOfYear;
-//  return 2 * Math.PI * (msAfterSolstice / msInYear);
-
-  // Figure out how long it's been since the last ephemeris
-  msAfterEphemeris = now - earth.dateOfEphemeris;
-  hoursAfterEphemeris = (msAfterEphemeris / 1000.0) / 3600.0;
-  // radiansAfterEphemeris = (hoursAfterEphemeris * earth.siderialAngularVelocity);
-  radiansAfterEphemeris = (hoursAfterEphemeris * (2 * Math.PI) / (EARTH_SIDEREAL_PERIOD_DAYS * 24));
-  return (earth.siderialAngle + radiansAfterEphemeris) - earthWinterSolsticeAngle;
+  now = getHeavenlyTime();
+  // Months are zero-indexed, days are one-indexed
+  startOfYear = Date.UTC(now.getUTCFullYear(), 0, 1, 0, 0, 0, 0);
+  thisYearsWinterSolstice = Date.UTC(now.getUTCFullYear(), 11, 21, 0, 0, 0, 0);
+  msAfterSolstice = (now - thisYearsWinterSolstice); // may be negative
+  msInYear = (Date.UTC(now.getUTCFullYear(), 11, 30, 23, 59, 59, 999)) - startOfYear;
+  return 2 * Math.PI * (msAfterSolstice / msInYear);
 }
 
 // The angle of the prime meridian with respect to noon
@@ -281,25 +268,27 @@ function getEarthRotationalAngle() {
 // Where the moon is in its orbit, relative to the celestial sphere
 function getMoonOrbitalAngle() {
   now = getHeavenlyTimeMs();
+  return 0;
 
   // Figure out how long it's been since the last ephemeris
-  msAfterEphemeris = now - luna.dateOfEphemeris;
-  hoursAfterEphemeris = (msAfterEphemeris / 1000.0) / 3600.0;
+  // msAfterEphemeris = now - luna.dateOfEphemeris;
+  // hoursAfterEphemeris = (msAfterEphemeris / 1000.0) / 3600.0;
   // radiansAfterEphemeris = (hoursAfterEphemeris * luna.siderialAngularVelocity);
-  radiansAfterEphemeris = (hoursAfterEphemeris * (2 * Math.PI) / (LUNA_SIDEREAL_PERIOD_DAYS * 24));
-  return (luna.siderialAngle + radiansAfterEphemeris);
+  // radiansAfterEphemeris = (hoursAfterEphemeris * (2 * Math.PI) / (LUNA_SIDEREAL_PERIOD_DAYS * 24));
+  // return (luna.siderialAngle + radiansAfterEphemeris);
 }
 
 function getMoonOrbitalAngleAtStartOfMonth() {
   // How far through the lunar orbital period was the ephemeris?
   // Each ring is exactly one orbital period around, so we can
   // map the moon's location at that time to that fraction of a circle.
-  ephemerisDate = new Date(luna.dateOfEphemeris);
-  dayOfMonth = ephemerisDate.getUTCDate() - 1; // May 1 is the 0th day
-  timeIntoMonth = dayOfMonth / LUNA_SIDEREAL_PERIOD_DAYS;
-  radiansIntoMonth = timeIntoMonth * (2 * Math.PI);
-  moonOrbitalAngleAtStartOfMonth = luna.siderialAngle - radiansIntoMonth;
-  return moonOrbitalAngleAtStartOfMonth;
+  return 0;
+  // ephemerisDate = new Date(luna.dateOfEphemeris);
+  // dayOfMonth = ephemerisDate.getUTCDate() - 1; // May 1 is the 0th day
+  // timeIntoMonth = dayOfMonth / LUNA_SIDEREAL_PERIOD_DAYS;
+  // radiansIntoMonth = timeIntoMonth * (2 * Math.PI);
+  // moonOrbitalAngleAtStartOfMonth = luna.siderialAngle - radiansIntoMonth;
+  // return moonOrbitalAngleAtStartOfMonth;
 }
 
 function getDayRing() {
