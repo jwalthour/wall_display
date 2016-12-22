@@ -3,11 +3,10 @@ var moonOrbitalRadius = 110;
 var earthAxialTilt = 20.0; // degrees
 var nPoleShiftDueToAxialTilt = earthAxialTilt / 180.0; // As a fraction of the image width (for an image showing the entire globe as an azimuthal projection)
 var observerLongitudeRad = -79 * Math.PI / 180;
-// Taken from the HORIZONS ephemeris for the 2014 solstice, which was at 2014-12-23 23:03 UTC.
-var earthWinterSolsticeAngle = rightAscensionStringToRadians("06 07 57.94");
 // The angle at which we draw the winter solstice, in navigator's convention.
 // This is the "reference angle" for the clock.
 var earthWinterSolsticeDrawAngle = -Math.PI / 2;
+var SOLSTICE_DAY = 21; // The day in December that is labeled on the month ring as the winter solstice
 
 var imgBg = new Image();
 var imgSun = new Image();
@@ -249,7 +248,7 @@ function getEarthOrbitalAngle(now = null) {
   now = getHeavenlyTime();
   // Months are zero-indexed, days are one-indexed
   startOfYear = Date.UTC(now.getUTCFullYear(), 0, 1, 0, 0, 0, 0);
-  thisYearsWinterSolstice = Date.UTC(now.getUTCFullYear(), 11, 21, 0, 0, 0, 0);
+  thisYearsWinterSolstice = Date.UTC(now.getUTCFullYear(), 11, SOLSTICE_DAY, 0, 0, 0, 0);
   msAfterSolstice = (now - thisYearsWinterSolstice); // may be negative
   msInYear = (Date.UTC(now.getUTCFullYear(), 11, 30, 23, 59, 59, 999)) - startOfYear;
   return 2 * Math.PI * (msAfterSolstice / msInYear);
